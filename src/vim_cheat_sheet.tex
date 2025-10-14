@@ -1,0 +1,180 @@
+\documentclass[landscape,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\urlstyle{same}
+
+\definecolor{footgray}{gray}{0.35}
+
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{1cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\setlength{\footskip}{16pt}
+\fancyfoot[R]{\footnotesize\color{footgray}{\textls[80]{CREATED BY}} Adam Tarantino \textbullet\ \url{https://github.com/atarantino/cheetsheets}}
+
+\begin{document}
+\begin{center}
+{\Huge \textbf{VIM MOTIONS + OPERATORS CHEAT SHEET}}\\[5mm]
+\end{center}
+
+\begin{multicols}{2}
+
+\section*{\textcolor{OliveGreen}{1. MOTIONS — Moving Through Text}}
+Motions define \textbf{where} an operation acts. Combine them with operators to create powerful editing commands.
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Motion} & \textbf{Action} & \textbf{Example}\\
+\hline
+h / l & Move left / right & \texttt{3l} — move 3 chars right\\
+j / k & Down / up line & \texttt{5j} — move 5 lines down\\
+w / b & Next / previous word & \texttt{2w} — jump 2 words forward\\
+0 / \$ & Start / end of line & \texttt{\$} — end of current line\\
+f\{x\} & Find char right & \texttt{f(} — jump to next "("\\
+t\{x\} & Until char (right) & \texttt{t(} — stop before "("\\
+F\{x\}/T\{x\} & Backward find/until & \texttt{F[}, \texttt{T(}\\
+; / , & Repeat last f/F/t/T & \texttt{;} — next match\\
+\% & Matching bracket/brace & \texttt{\%} — move to opposite pair\\
+8j & Move 8 lines down &  \\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=OliveGreen!8, colframe=OliveGreen, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Tip: Motions can take counts — use numbers to repeat them quickly.
+\end{tcolorbox}
+
+\section*{\textcolor{YellowOrange}{2. TEXT OBJECTS — Acting on Chunks}}
+Text objects define \textbf{semantic areas} inside or around words, quotes, or blocks.
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Text Object} & \textbf{Action} & \textbf{Example}\\
+\hline
+iw / iW & Inside word / WORD & \texttt{viw} — select a word\\
+ip / ap & Inside / around paragraph & \texttt{dap}, \texttt{dip}\\
+i" & Inside quotes & \texttt{ci"} — change quoted text\\
+i( / a( & Inside / around parentheses & \texttt{di(}, \texttt{da()}\\
+i\{\} & Inside braces & \texttt{ci\{\}}\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=YellowOrange!8, colframe=YellowOrange, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+"Inside" excludes delimiters — "Around" includes them.
+\end{tcolorbox}
+
+\section*{\textcolor{BrickRed}{3. OPERATORS — What You Do}}
+Operators define \textbf{the action}. Combine them with motions or text objects.
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Operator} & \textbf{Purpose} & \textbf{Example}\\
+\hline
+d & Delete & \texttt{dj}\\
+c & Change (delete + insert) & \texttt{ct(}\\
+y & Yank (copy) & \texttt{yiw}\\
+p & Paste & \texttt{p}\\
+> / < & Indent / unindent & \texttt{>ip}\\
+= & Auto-indent & \texttt{=\%}\\
+. & Repeat last change & \texttt{.}\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=BrickRed!8, colframe=BrickRed, boxsep=2pt, arc=1pt, fontupper=\small]
+\textbf{The core pattern:} \texttt{OPERATOR + MOTION}\\[1mm]
+Examples: \texttt{d2w} (delete two words), \texttt{y\$} (copy to EOL), \texttt{c\}} (change to end of paragraph).
+\end{tcolorbox}
+
+\section*{\textcolor{RoyalBlue}{4. VISUAL + CLIPBOARD BASICS}}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Command} & \textbf{What It Does} & \textbf{Example}\\
+\hline
+v & Visual (character) & \texttt{vaw} — select a word\\
+V & Visual (line) & \texttt{V\%} — select full block\\
+"+y & Yank to system clipboard & \texttt{"+yy} — copy line globally\\
+p & Paste after cursor & \texttt{p}\\
+<leader> & Custom prefix (e.g. \texttt{<Space>}) & \texttt{<Space>y} — custom yank\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=RoyalBlue!8, colframe=RoyalBlue, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Vim's "registers" keep multiple clipboards: unnamed, system (\texttt{+}), or numbered.
+\end{tcolorbox}
+
+\section*{\textcolor{Purple}{5. EXAMPLE COMBOS}}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Command} & \textbf{Effect}\\
+\hline
+ci( & Change inside parentheses\\
+yiw & Yank word under cursor\\
+dap & Delete entire paragraph\\
+8j   & Move eight lines down\\
+V\%y & Select whole code block and copy\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=Purple!8, colframe=Purple, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Editing feels like combos — motions are your movement, operators your attacks!
+\end{tcolorbox}
+
+\section*{\textcolor{Gray}{6. COOL CONCEPTS \& TOOLS}}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\textbf{Feature} & \textbf{Purpose / Benefit}\\
+\hline
+Relative line numbers & Show line distance for fast jumps (\texttt{8j}, \texttt{11k})\\
+Quickfix list (\texttt{:copen}) & Review all matches or LSP references\\
+Macros (\texttt{q a … q}) & Record/replay edits (\texttt{@a})\\
+Harpoon plugin & Quick "sticky file" switching \\
+Leader key mappings & Custom shortcuts for frequent actions\\
+Registers & Separate internal and system clipboards\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vspace{2mm}
+\begin{tcolorbox}[colback=Gray!15, colframe=Gray, boxsep=2pt, arc=1pt, fontupper=\small\itshape]
+Tip: You can automate repetitive changes using macros or quickfix navigation.
+\end{tcolorbox}
+
+\section*{\textcolor{Black}{7. QUICK PATTERNS TO REMEMBER}}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\normalfont\textbf{Pattern} & \textbf{Meaning}\\
+\hline
+OPERATOR + MOTION & Perform action over motion range\\
+vi\{\} & Visual select inside braces\\
+di" & Delete inside quotes\\
+dap & Delete paragraph\\
+yiw, yaw & Yank word (inside / around)\\
+@a & Execute macro a\\
+:copen & Open quickfix window\\
+. & Repeat last edit\\
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\vfill
+\begin{center}
+{\small ©2025 Vim Tutorial Reference}
+\end{center}
+
+\end{multicols}
+\end{document}

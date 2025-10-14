@@ -1,0 +1,432 @@
+\documentclass[11pt,landscape,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{menukeys}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\urlstyle{same}
+
+% Define colors
+\definecolor{sectioncolor}{RGB}{41,128,185}
+\definecolor{windowscolor}{RGB}{0,120,215}
+\definecolor{macoscolor}{RGB}{107,142,35}
+\definecolor{devcolor}{RGB}{75,75,75}
+\definecolor{footgray}{gray}{0.35}
+
+% Custom section formatting
+\usepackage{titlesec}
+\titleformat{\section}
+  {\large\bfseries\color{sectioncolor}}
+  {}
+  {0em}
+  {}
+\titlespacing*{\section}{0pt}{0.25em}{0.15em}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{sectioncolor}}
+  {}
+  {0em}
+  {}
+\titlespacing*{\subsection}{0pt}{0.15em}{0.08em}
+
+% Remove default page numbers and setup footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\setlength{\footskip}{16pt}
+\fancyfoot[R]{\footnotesize\color{footgray} Adam Tarantino \textbullet\ \url{https://github.com/atarantino/cheetsheets}}
+
+% Adjust spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.15em}
+\setlength{\columnsep}{0.7cm}
+
+% Compact list settings
+\setlist{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt}
+
+% Compact tcolorbox settings
+\tcbset{
+    boxsep=1pt,
+    left=3pt,
+    right=3pt,
+    top=3pt,
+    bottom=3pt,
+    arc=2pt
+}
+
+% Define named box styles
+\newtcolorbox{windowsbox}{colback=windowscolor!10, colframe=windowscolor, fontupper=\footnotesize}
+\newtcolorbox{macbox}{colback=macoscolor!10, colframe=macoscolor, fontupper=\footnotesize}
+\newtcolorbox{devbox}{colback=devcolor!10, colframe=devcolor, fontupper=\footnotesize}
+\newtcolorbox{corebox}{colback=sectioncolor!12, colframe=sectioncolor, fontupper=\footnotesize}
+
+\newcommand{\keyline}[2]{\keys{#1}\,\textemdash\,#2}
+
+% OS toggles
+\newif\ifmac
+\newif\ifwin
+\newif\ifincludeBonus
+\mactrue
+\wintrue
+\includeBonustrue
+\ifdefined\MACONLY
+  \mactrue\winfalse\includeBonusfalse
+\fi
+\ifdefined\WINONLY
+  \macfalse\wintrue\includeBonusfalse
+\fi
+
+\begin{document}
+\setstretch{1.15}
+
+\ifwin
+% ========== WINDOWS PAGE ==========
+\begin{center}
+{\LARGE\bfseries\color{windowscolor} Windows Productivity Cheat Sheet}\\[0.2em]
+{\small\color{gray} Small improvements compound into a big impact — Reduce RSI, distribute the workload}
+\end{center}
+
+\vspace{-0.2em}
+
+\begin{multicols}{3}
+
+\section*{Core Philosophy}
+\begin{corebox}
+\textbf{Principles:}\\
+\textbullet{} 1--2 keystrokes to any app\\
+\textbullet{} Minimize mouse usage\\
+\textbullet{} Reduce friction
+\end{corebox}
+
+\section*{Essential Shortcuts}
+\begin{windowsbox}
+\textbf{Launch \& Switch Apps}\\
+\keyline{Win}{Start menu \textemdash\,type to search}\\
+\keyline{Win+1-9}{Launch/show app. 1-9 maps to order in taskbar}\\
+\keyline{Win+Shift+1-9}{Launch new instance}\\
+Hold \keys{Win}, tap \keys{1-9}\,\textemdash\,Cycle that app's windows\\
+\keyline{Alt+Tab}{Switch apps}\\
+\keyline{Alt+Space}{Command Palette\textemdash{run commands and apps}}
+\end{windowsbox}
+
+\begin{windowsbox}
+\textbf{Window Controls}\\
+\keyline{Win+Left}{Snap window left}\\
+\keyline{Win+Right}{Snap window right}\\
+\keyline{Win+Up}{Maximize window}\\
+\keyline{Win+Down}{Minimize window}\\
+\keyline{Win+Shift+Left/Right}{Move window to adjacent monitor}\\
+\keyline{Win+D}{Show desktop}\\
+\keyline{Alt+F4}{Close window}
+\end{windowsbox}
+
+\begin{windowsbox}
+\textbf{Misc.}\\
+\keyline{Win+V}{Clipboard history}\\
+\keyline{Win+.}{Emoji panel}
+\end{windowsbox}
+
+\section*{Browser Productivity}
+
+\begin{windowsbox}
+\textbf{Tab Navigation}\\
+\keyline{Ctrl+T}{New tab}\\
+\keyline{Ctrl+W}{Close tab}\\
+\keyline{Ctrl+Shift+T}{Reopen last closed tab}\\
+\keyline{Ctrl+Tab}{Next tab}\\
+\keyline{Ctrl+1-9}{Jump to tab (9 selects last tab)}\\
+\keyline{Ctrl+L}{Focus address bar}\\
+\keyline{Alt+O}{Okta apps launcher}
+\end{windowsbox}
+
+\begin{windowsbox}
+\textbf{Page Actions}\\
+\keyline{Ctrl+D}{Bookmark page}\\
+\keyline{Ctrl+R}{Refresh}\\
+\keyline{Ctrl+F}{Find on page}\\
+\keyline{F11}{Toggle fullscreen}\\
+\keyline{F12 / Ctrl+Shift+I}{Open DevTools}
+\end{windowsbox}
+
+\section*{Microsoft Teams}
+
+\begin{windowsbox}
+\keyline{Ctrl+.}{Show shortcuts}\\
+\keyline{Ctrl+Shift+M}{Mute or unmute}\\
+\keyline{Ctrl+Shift+O}{Toggle camera}\\
+\keyline{Ctrl+E}{Search}\\
+\keyline{Ctrl+G}{Go to channel}\\
+\keyline{Ctrl+/}{Show slash commands}
+\end{windowsbox}
+
+\columnbreak
+
+\section*{File Explorer}
+
+\begin{windowsbox}
+\keyline{Ctrl+L}{Focus address bar}\\
+\keyline{Alt+Left}{Back}\\
+\keyline{Alt+Right}{Forward}\\
+\keyline{Alt+Up}{Parent directory}\\
+\keyline{Ctrl+Shift+N}{Create new folder}\\
+\keyline{F2}{Rename item}
+\end{windowsbox}
+
+
+\section*{PowerToys}
+\textit{\footnotesize Open source utilities from Microsoft}
+\begin{windowsbox}
+\keyline{Alt+Space}{Command Palette\textemdash{run commands and apps}}\\
+\keyline{Win+Shift+C}{Color Picker}\\
+\keyline{Win+Shift+M}{Screen Ruler}\\
+\keyline{Win+Shift+`}{FancyZones editor}\\
+\textbf{FancyZones}\,\textemdash\,Create layouts for windows\\
+\textbf{Keyboard Manager}\,\textemdash\,Remap keys and create shortcuts\\
+\textit{...and more!}
+\end{windowsbox}
+
+\section*{Window Managers}
+
+\textit{\footnotesize Stop manually arranging windows! Steeper learning curve}
+
+\begin{windowsbox}
+\textbf{Open Source Tiling window managers}\\
+• \textbf{GlazeWM} - i3-inspired, YAML config\\
+• \textbf{Komorebi} - BSP tiling, advanced
+\end{windowsbox}
+
+\end{multicols}
+
+\fi
+\ifwin\newpage\fi
+
+\ifmac
+% ========== macOS PAGE ========== 
+\begin{center}
+{\LARGE\bfseries\color{macoscolor} macOS Productivity Cheat Sheet}\\[0.2em]
+{\normalsize\color{gray} Master Your Keyboard, Maximize Your Efficiency}
+\end{center}
+
+\vspace{-0.2em}
+
+\begin{multicols}{3}
+
+\section*{Core Philosophy}
+\begin{corebox}
+\textbf{Principles:}\\
+\textbullet{} 1--2 keystrokes to any app\\
+\textbullet{} Direct navigation $>$ search\\
+\textbullet{} Minimize mouse usage\\
+\textbullet{} Both hands working\\
+\textbullet{} Reduce cognitive load\\
+\textbullet{} Optimize the 99\%
+\end{corebox}
+
+\section*{Essential Shortcuts}
+
+\begin{macbox}
+\textbf{Launch \& Switch Apps}\\
+\keyline{Cmd+Space}{Spotlight or Alfred}\\
+\keyline{Cmd+Tab}{Switch apps}\\
+\keyline{Cmd+\textasciitilde}{Switch windows in app}\\
+\keyline{Cmd+H}{Hide window}\\
+\keyline{Cmd+Q}{Quit app}\\
+\end{macbox}
+
+\begin{macbox}
+\textbf{Window Controls}\\
+\keyline{Cmd+M}{Minimize}\\
+\keyline{Ctrl+Cmd+F}{Toggle fullscreen}\\
+\keyline{F11}{Show desktop}\\
+\keyline{F4}{Launchpad}\\
+\end{macbox}
+
+\begin{macbox}
+\textbf{Spaces \& Mission Control}\\
+\keyline{Ctrl+Left/Right}{Switch between spaces}\\
+\keyline{Ctrl+Up}{Mission Control}\\
+\keyline{Ctrl+Down}{Application windows}\\
+\keyline{F3}{Show all windows}
+\end{macbox}
+
+
+\section*{Browser Productivity}
+
+\begin{macbox}
+\textbf{Tab Navigation}\\
+\keyline{Cmd+T}{New tab}\\
+\keyline{Cmd+W}{Close tab}\\
+\keyline{Cmd+Shift+T}{Reopen last closed tab}\\
+\keyline{Cmd+Shift+]}{Next tab}\\
+\keyline{Cmd+Shift+[}{Previous tab}\\
+\keyline{Cmd+1-9}{Jump to tab}\\
+\keyline{Cmd+L}{Focus address bar}\\
+\end{macbox}
+
+\begin{macbox}
+\textbf{Page Actions}\\
+\keyline{Cmd+D}{Bookmark page}\\
+\keyline{Cmd+R}{Refresh}\\
+\keyline{Cmd+F}{Find on page}\\
+\keyline{Ctrl+Cmd+F}{Toggle fullscreen}\\
+\keyline{Cmd+Opt+I}{DevTools (Enable Develop menu in Safari)}\\
+\end{macbox}
+
+\section*{Microsoft Teams}
+
+\begin{macbox}
+\keyline{Cmd+Shift+M}{Mute or unmute}\\
+\keyline{Cmd+Shift+O}{Toggle camera}\\
+\keyline{Cmd+E}{Search}\\
+\keyline{Cmd+.}{Show shortcuts}\\
+\end{macbox}
+
+\columnbreak
+
+\section*{Window Managers}
+
+\textit{\footnotesize Stop manually arranging windows!}
+
+\begin{macbox}
+\textbf{Tiling window managers}\\
+• \textbf{Aerospace} - i3-like, fast\\
+• \textbf{yabai} - Advanced, with skhd\\
+• \textbf{Amethyst} - Xmonad-inspired\\
+• \textbf{Rectangle} - Simple snapping
+\end{macbox}
+
+\end{multicols}
+
+\fi
+\ifmac\newpage\fi
+
+\ifincludeBonus
+\begin{center}
+    {\LARGE\bfseries\color{devcolor} Bonus for Developers}\\[0.2em]
+    {\normalsize\color{gray} Power tools and Vimium shortcuts}
+\end{center}
+
+\vspace{-0.2em}
+
+\begin{multicols}{3}
+
+\section*{Developer Essentials}
+
+\begin{devbox}
+\textbf{Terminal Multiplexer: tmux}\\
+\texttt{tmux new -s name}\,\textemdash\,New session\\
+\keyline{Ctrl+B, D}{Detach}\\
+\texttt{tmux attach}\,\textemdash\,Reattach\\
+\keyline{Ctrl+B, C}{New window}\\
+\keyline{Ctrl+B, \%}{Split vertical}\\
+\keyline{Ctrl+B, "}{Split horizontal}
+\end{devbox}
+
+\begin{devbox}
+\textbf{Fuzzy Finder: FZF}\\
+\keyline{Ctrl+R}{Search history}\\
+Type \texttt{**} then press \keys{Tab}\,\textemdash\,File completion\\
+\keyline{Alt+C}{cd to directory}\\
+Integrates with Vim, Git, tmux!
+\end{devbox}
+
+\begin{devbox}
+\textbf{Vim Motions}\\
+\texttt{hjkl}\,\textemdash\,Navigate\\
+\texttt{w/b}\,\textemdash\,Word forward/back\\
+\texttt{f/t}\,\textemdash\,Find/till character\\
+\texttt{ci"}\,\textemdash\,Change inside quotes\\
+\texttt{dd/yy/p}\,\textemdash\,Delete/yank/paste
+\end{devbox}
+
+\section*{Power Tools}
+
+\begin{devbox}
+\textbf{JSON: jq}\\
+\texttt{jq '.' file.json}\,\textemdash\,Pretty print\\
+\texttt{jq '.field' data.json}\,\textemdash\,Extract\\
+\texttt{jq '.[]' array.json}\,\textemdash\,Iterate
+\end{devbox}
+
+\begin{devbox}
+\textbf{Text Processing: sed}\\
+\texttt{sed 's/old/new/g'}\,\textemdash\,Replace all\\
+\texttt{sed '/pattern/d'}\,\textemdash\,Delete lines\\
+\texttt{sed -n '5,10p'}\,\textemdash\,Print range
+\end{devbox}
+
+\begin{devbox}
+\textbf{Find Files: find}\\
+\texttt{find . -name "*.js"}\,\textemdash\,By name\\
+\texttt{find . -type d}\,\textemdash\,Directories\\
+\texttt{find . -mtime -7}\,\textemdash\,Recent
+\end{devbox}
+
+\begin{devbox}
+\textbf{Parallel Processing}\\
+\texttt{xargs -P 4}\,\textemdash\,4 parallel jobs\\
+\texttt{parallel -j +0}\,\textemdash\,Use all cores
+\end{devbox}
+
+\section*{Vimium}
+
+\begin{devbox}
+\begin{tabularx}{\linewidth}{@{}>{\ttfamily}l@{\hspace{0.5em}}X@{}}
+\multicolumn{2}{@{}l@{}}{\textbf{Navigating the page}}\\
+j & Scroll down\\
+k & Scroll up\\
+gg & Scroll to the top\\
+G & Scroll to the bottom\\
+d & Scroll half page down\\
+u & Scroll half page up\\
+r & Reload the page\\
+yy & Copy URL to clipboard\\
+p & Open clipboard URL (current tab)\\
+P & Open clipboard URL (new tab)\\
+f & Open link (current tab)\\
+F & Open link (new tab)\\
+gi & Focus first text input\\
+\\
+\multicolumn{2}{@{}l@{}}{\textbf{Find \& Search}}\\
+/ & Enter find mode\\
+n & Next find match\\
+N & Previous find match\\
+o & Open URL/bookmark/history\\
+O & Open in new tab\\
+b & Open bookmark\\
+B & Open bookmark (new tab)\\
+T & Search open tabs\\
+\\
+\multicolumn{2}{@{}l@{}}{\textbf{Tabs \& History}}\\
+t & New tab\\
+J & Go one tab left\\
+K & Go one tab right\\
+g0 & First tab\\
+g\$ & Last tab\\
+yt & Duplicate tab\\
+x & Close tab\\
+X & Restore closed tab\\
+H & Back in history\\
+L & Forward in history\\
+? & Show help\\
+\end{tabularx}
+\end{devbox}
+
+\end{multicols}
+\fi
+
+\end{document}
