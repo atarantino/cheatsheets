@@ -1,63 +1,43 @@
 # LaTeX Cheat Sheets
 
-A collection of productivity and reference cheat sheets built with LaTeX.
+A minimal guide to get set up and build the PDFs.
 
-## Contents
+## Prerequisites
 
-- **productivity-cheatsheet.tex** - Main productivity cheat sheet with common shortcuts and workflows
-- **productivity-cheatsheet-mac.tex** - macOS-specific productivity cheat sheet
-- **productivity-cheatsheet-windows.tex** - Windows-specific productivity cheat sheet
-- **vim_cheat_sheet.tex** - Vim editor keyboard shortcuts and commands
+Install a LaTeX distribution and ensure `latexmk` is available:
+- Linux: TeX Live (e.g., `sudo apt install texlive-full`) or `texlive-latex-extra latexmk`
+- macOS: MacTeX (or BasicTeX) — `latexmk` is included; if needed: `brew install latexmk`
+- Windows: MiKTeX (enable on-the-fly package installation)
 
-## Building
-
-### Prerequisites
-
-Ensure you have `latexmk` installed. On macOS:
+Verify tools:
 ```bash
-brew install latexmk
+latexmk -v
+pdflatex --version
 ```
 
-### Build Commands
+## Build
 
-Build all PDFs:
+Run from the repository root.
+
+- Build all PDFs:
 ```bash
 latexmk
 ```
 
-Build a specific document:
+- Build a specific document:
 ```bash
 latexmk src/productivity-cheatsheet-mac.tex
 latexmk src/vim_cheat_sheet.tex
 ```
 
-Clean build artifacts:
+- Clean artifacts (keep PDFs):
 ```bash
 latexmk -c
 ```
 
-Clean everything including PDFs:
+- Full clean (remove PDFs):
 ```bash
 latexmk -C
 ```
 
-PDFs are output to the `build/` directory.
-
-## Project Structure
-
-- `src/` - LaTeX source files
-- `build/` - Generated PDF output (created during build)
-- `latexmkrc` - Build configuration for latexmk
-
-## Code Style
-
-- Self-contained `.tex` files with variant wrappers for OS-specific content
-- OS variants use `\ifdefined\MACONLY` / `\ifdefined\WINONLY` conditionals
-- Standard LaTeX packages only (multicol, xcolor, geometry, tcolorbox, etc.)
-- CamelCase command naming with semantic names (e.g., `\sectioncolor`, `\windowscolor`)
-- 2-space indentation, landscape orientation for cheat sheets
-- Minimal margins (0.5in) for compact layout
-
-## Configuration
-
-Build behavior can be customized by editing `latexmkrc`.
+PDFs are written to `build/` (configured in `latexmkrc`).
