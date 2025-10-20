@@ -1,4 +1,6 @@
-build/
+/build/*
+!/build/
+!/build/**/*.pdf
 *.aux
 *.fdb_latexmk
 *.fls
