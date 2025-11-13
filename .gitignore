@@ -1,6 +1,4 @@
-/build/*
-!/build/
-!/build/**/*.pdf
+src/build/
 *.aux
 *.fdb_latexmk
 *.fls
