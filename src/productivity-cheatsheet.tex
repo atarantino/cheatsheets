@@ -22,7 +22,7 @@
 % Define colors
 \definecolor{sectioncolor}{RGB}{41,128,185}
 \definecolor{windowscolor}{RGB}{0,120,215}
-\definecolor{macoscolor}{RGB}{107,142,35}
+\definecolor{macoscolor}{RGB}{0,120,215}
 \definecolor{devcolor}{RGB}{75,75,75}
 \definecolor{footgray}{gray}{0.35}
 
@@ -61,10 +61,10 @@
 % Compact tcolorbox settings
 \tcbset{
     boxsep=1pt,
-    left=3pt,
-    right=3pt,
-    top=3pt,
-    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    top=2pt,
+    bottom=2pt,
     arc=2pt
 }
 
@@ -159,7 +159,7 @@ Hold \keys{Win}, tap \keys{1-9}\,\textemdash\,Cycle that app's windows\\
 \keyline{Ctrl+R}{Refresh}\\
 \keyline{Ctrl+F}{Find on page}\\
 \keyline{F11}{Toggle fullscreen}\\
-\keys{F12}\,/\,\keys{Ctrl+Shift+I}\,\textemdash\,Open DevTools\\
+\keys{F12}\,/\,\keys{Ctrl+Shift+I}\,\textemdash\,Open DevTools
 \end{windowsbox}
 
 \section*{Microsoft Teams}
@@ -215,10 +215,10 @@ Hold \keys{Win}, tap \keys{1-9}\,\textemdash\,Cycle that app's windows\\
 \ifwin\newpage\fi
 
 \ifmac
-% ========== macOS PAGE ========== 
+% ========== macOS PAGE ==========
 \begin{center}
 {\LARGE\bfseries\color{macoscolor} macOS Productivity Cheat Sheet}\\[0.2em]
-{\normalsize\color{gray} Master Your Keyboard, Maximize Your Efficiency}
+{\small\color{gray} Small improvements compound into a big impact — Reduce RSI, distribute the workload}
 \end{center}
 
 \vspace{-0.2em}
@@ -229,40 +229,44 @@ Hold \keys{Win}, tap \keys{1-9}\,\textemdash\,Cycle that app's windows\\
 \begin{corebox}
 \textbf{Principles:}\\
 \textbullet{} 1--2 keystrokes to any app\\
-\textbullet{} Direct navigation $>$ search\\
 \textbullet{} Minimize mouse usage\\
-\textbullet{} Both hands working\\
-\textbullet{} Reduce cognitive load\\
-\textbullet{} Optimize the 99\%
+\textbullet{} Reduce friction
 \end{corebox}
 
 \section*{Essential Shortcuts}
-
 \begin{macbox}
 \textbf{Launch \& Switch Apps}\\
-\keyline{Cmd+Space}{Spotlight or Alfred}\\
+\keyline{Cmd+Space}{Spotlight / Raycast / Alfred}\\
+\keyline{Cmd+\textasciitilde}{Cycle that app's windows}\\
 \keyline{Cmd+Tab}{Switch apps}\\
-\keyline{Cmd+\textasciitilde}{Switch windows in app}\\
-\keyline{Cmd+H}{Hide window}\\
-\keyline{Cmd+Q}{Quit app}\\
+\textit{Alternative: AltTab \href{https://github.com/lwouis/alt-tab-macos}{github.com/lwouis/alt-tab-macos}}
 \end{macbox}
 
 \begin{macbox}
 \textbf{Window Controls}\\
-\keyline{Cmd+M}{Minimize}\\
 \keyline{Ctrl+Cmd+F}{Toggle fullscreen}\\
-\keyline{F11}{Show desktop}\\
-\keyline{F4}{Launchpad}\\
+\keyline{Cmd+M}{Minimize}\\
+\keyline{Cmd+H}{Hide window}\\
+\keyline{Cmd+Q}{Quit app}
+\end{macbox}
+\begin{macbox}
+\textbf{Rectangle} \href{https://github.com/rxhanson/Rectangle}{github.com/rxhanson/Rectangle}\\
+\keyline{Ctrl+Opt+Left/Right}{Snap window left/right}\\
+\keyline{Ctrl+Opt+Enter}{Maximize window}
+\end{macbox}
+\begin{macbox}
+\textbf{Raycast} \href{https://www.raycast.com}{raycast.com}\\
+\textbf{Tip:} Enable Hyper key in settings and assign hotkeys\\
+\keyline{Hyper+Left/Right}{Snap window left/right}\\
+\keyline{Hyper+Up}{Maximize window}
 \end{macbox}
 
 \begin{macbox}
-\textbf{Spaces \& Mission Control}\\
-\keyline{Ctrl+Left/Right}{Switch between spaces}\\
-\keyline{Ctrl+Up}{Mission Control}\\
-\keyline{Ctrl+Down}{Application windows}\\
-\keyline{F3}{Show all windows}
+\textbf{Misc.}\\
+\keyline{Ctrl+Cmd+Space}{Emoji \& symbols}
 \end{macbox}
 
+\columnbreak
 
 \section*{Browser Productivity}
 
@@ -271,10 +275,11 @@ Hold \keys{Win}, tap \keys{1-9}\,\textemdash\,Cycle that app's windows\\
 \keyline{Cmd+T}{New tab}\\
 \keyline{Cmd+W}{Close tab}\\
 \keyline{Cmd+Shift+T}{Reopen last closed tab}\\
-\keyline{Cmd+Shift+]}{Next tab}\\
+\keyline{Ctrl+Tab}{Next tab (Chrome/Firefox)}\\
+\keyline{Cmd+Shift+]}{Next tab (Safari)}\\
 \keyline{Cmd+Shift+[}{Previous tab}\\
 \keyline{Cmd+1-9}{Jump to tab}\\
-\keyline{Cmd+L}{Focus address bar}\\
+\keyline{Cmd+L}{Focus address bar}
 \end{macbox}
 
 \begin{macbox}
@@ -283,30 +288,53 @@ Hold \keys{Win}, tap \keys{1-9}\,\textemdash\,Cycle that app's windows\\
 \keyline{Cmd+R}{Refresh}\\
 \keyline{Cmd+F}{Find on page}\\
 \keyline{Ctrl+Cmd+F}{Toggle fullscreen}\\
-\keyline{Cmd+Opt+I}{DevTools (Enable Develop menu in Safari)}\\
+\keys{F12}\,/\,\keys{Ctrl+Shift+I}\,\textemdash\,Open DevTools
 \end{macbox}
 
 \section*{Microsoft Teams}
 
 \begin{macbox}
+\keyline{Cmd+.}{Show shortcuts}\\
 \keyline{Cmd+Shift+M}{Mute or unmute}\\
 \keyline{Cmd+Shift+O}{Toggle camera}\\
 \keyline{Cmd+E}{Search}\\
-\keyline{Cmd+.}{Show shortcuts}\\
+\keyline{Cmd+Shift+G}{Go to channel}\\
+\keyline{Cmd+/}{Show slash commands}
 \end{macbox}
 
-\columnbreak
+\section*{Finder}
+
+\begin{macbox}
+\keyline{Cmd+Shift+N}{New folder}\\
+\keyline{Cmd+Shift+G}{Go to folder}\\
+\keyline{Cmd+Up}{Parent folder}\\
+\keyline{Cmd+Down}{Open selected item}\\
+\keyline{Cmd+[}{Back}\\
+\keyline{Cmd+]}{Forward}\\
+\keyline{Cmd+Delete}{Move to trash}\\
+\keyline{Space}{Quick Look}\\
+\keyline{Enter}{Rename selected item}\\
+\keyline{Cmd+Opt+P}{Toggle Path Bar}\\
+\keyline{Cmd+Opt+T}{Toggle Toolbar}\\
+\keyline{Cmd+Opt+S}{Toggle Sidebar}
+\end{macbox}
+
+\section*{Raycast}
+\textit{\footnotesize Suite of productivity tools \href{https://www.raycast.com}{raycast.com}}
+\begin{macbox}
+\keyline{Cmd+Space}{Launch Raycast (rebind from Spotlight)}\\
+App launcher, window mgmt, keyboard shortcuts\\
+\textit{Alternatives: Alfred, Maccy}
+\end{macbox}
+
 
 \section*{Window Managers}
 
-\textit{\footnotesize Stop manually arranging windows!}
-
+\textit{\footnotesize Stop manually arranging windows! Steeper learning curve}
 \begin{macbox}
-\textbf{Tiling window managers}\\
-• \textbf{Aerospace} - i3-like, fast\\
-• \textbf{yabai} - Advanced, with skhd\\
-• \textbf{Amethyst} - Xmonad-inspired\\
-• \textbf{Rectangle} - Simple snapping
+\textbf{Open Source Tiling window managers}\\
+• \textbf{Aerospace} - i3-like, keyboard-driven\\
+• \textbf{yabai} - BSP tiling, advanced features
 \end{macbox}
 
 \end{multicols}
