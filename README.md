@@ -1,6 +1,12 @@
 # LaTeX Cheat Sheets
 
-A minimal guide to get set up and build the PDFs.
+A collection of LaTeX-based cheat sheets for productivity tools and shortcuts.
+
+## Available Cheat Sheets
+
+- [macOS Productivity Cheat Sheet](build/productivity-cheatsheet-mac.pdf)
+- [Windows Productivity Cheat Sheet](build/productivity-cheatsheet-windows.pdf)
+- [Vim Cheat Sheet](build/vim_cheat_sheet.pdf)
 
 ## Prerequisites
 
